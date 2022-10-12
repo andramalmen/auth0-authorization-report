@@ -1,0 +1,51 @@
+{
+  "name": "auth0-authorization-report",
+  "version": "1.0.0",
+  "description": "Generates report for the Authorization extension",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development ts-node ./src/index.ts",
+    "dev:watch": "NODE_ENV=development nodemon",
+    "start": "NODE_ENV=production node build/src/index.js",
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint --ignore-path .prettierignore --ext .js,.ts .",
+    "format": "prettier --ignore-path .prettierignore --write --loglevel silent '**/*.{ts,js,json}'",
+    "format:check": "prettier --check '**/*.{ts,js,json}'",
+    "validate": "npm-run-all --parallel format:check lint build",
+    "prepare": "husky install",
+    "scriptname": "husky install"
+  },
+  "keywords": [
+    "auth0",
+    "extension",
+    "report"
+  ],
+  "author": "Andra Malmen",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.1.1",
+    "@types/node": "^18.7.23",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "jest": "^29.1.2",
+    "jest-watch-typeahead": "^2.2.0",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@types/pdfkit": "^0.12.6",
+    "dotenv": "^16.0.3",
+    "pdfkit-table": "^0.1.99"
+  }
+}
