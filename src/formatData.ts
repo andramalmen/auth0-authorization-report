@@ -46,12 +46,14 @@ export const getData = (
   rolesData: AuthData,
   permissionsData: AuthData
 ) => {
-  const boGroups = groupData.groups?.filter((group) => {
-    if (!APP_PREFIX) {
-      return false;
-    }
-    return group.name.includes(APP_PREFIX);
-  });
+  const boGroups = groupData.groups
+    ?.filter((group) => {
+      if (!APP_PREFIX) {
+        return false;
+      }
+      return group.name.includes(APP_PREFIX);
+    })
+    .sort((g1, g2) => (g1.name > g2.name ? 1 : g2.name > g1.name ? -1 : 0));
 
   const displayData = boGroups?.map((group) => {
     const rolesToName = mapToName(rolesData?.roles);

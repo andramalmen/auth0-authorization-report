@@ -10,19 +10,25 @@ export const getAccessToken = async () => {
     audience: AUDIENCE,
     grant_type: 'client_credentials',
   };
-  const response = await fetch(`${APP_HOST}/oauth/token`, {
-    method: 'POST',
-    body: JSON.stringify(body),
-    headers: { 'Content-Type': 'application/json' },
-  });
-  const data = await response.json();
-  return data.access_token;
+  try {
+    const response = await fetch(`${APP_HOST}oauth/token`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const data = await response.json();
+    return data.access_token;
+  } catch (err) {
+    console.info('Could not get token');
+    console.error(err);
+  }
 };
 
 type Resource = 'groups' | 'roles' | 'permissions';
 
 export const getAuthData = async (resource: Resource) => {
   const accessToken = await getAccessToken();
+
   const response = await fetch(`${API_HOST}/${resource}`, {
     headers: {
       'Content-Type': 'application/json',

@@ -3,4 +3,4 @@ build
 .eslintcache
 .env
 data.ts
-document.pdf
+*.pdf
